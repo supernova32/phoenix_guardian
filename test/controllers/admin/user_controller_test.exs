@@ -3,11 +3,11 @@ defmodule PhoenixGuardian.UserControllerTest do
   import PhoenixGuardian.Factory
 
   setup do
-    {:ok, %{user1: create(:user), user2: create(:user)}}
+    {:ok, %{user1: insert(:user), user2: insert(:user)}}
   end
 
   test "GET /admin/users without login" do
-    conn = conn()
+    conn = build_conn()
     conn = get conn, admin_user_path(conn, :index)
     assert html_response(conn, 302)
   end
@@ -26,4 +26,3 @@ defmodule PhoenixGuardian.UserControllerTest do
     assert conn.resp_body =~ user2.email
   end
 end
-

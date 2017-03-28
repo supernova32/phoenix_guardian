@@ -10,11 +10,11 @@ defmodule PhoenixGuardian.User do
 
     has_many :authorizations, PhoenixGuardian.Authorization
 
-    timestamps
+    timestamps()
   end
 
   @required_fields ~w(email name)a
-  @optional_fields ~w()a
+  @optional_fields ~w(is_admin)a
 
   def registration_changeset(model, params \\ :empty) do
     model
